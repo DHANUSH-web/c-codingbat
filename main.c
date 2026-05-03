@@ -304,6 +304,15 @@ int* fizz_array(const int n)
     return arr;
 }
 
+const BOOL only14(const int* nums, const int size)
+{
+    for (int i = 0; i < size; i++)
+        if (nums[i] != 1 && nums[i] != 4)
+            return FALSE;
+    
+    return TRUE;
+}
+
 #ifndef UNIT_TEST
 int main()
 {
