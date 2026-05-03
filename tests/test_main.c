@@ -272,6 +272,39 @@ void test_only14(void)
     TEST_ASSERT_FALSE(only14(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
     TEST_ASSERT_TRUE(only14(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
+
+void test_fizz_array2(void)
+{
+    char** TEST1 = fizz_array2(4);
+    char** TEST2 = fizz_array2(1);
+    char** TEST3 = fizz_array2(10);
+
+    const char TEST1_EXPECTED[4][2] = {"0", "1", "2", "3"};
+    const char TEST2_EXPECTED[1][2] = {"0"};
+    const char TEST3_EXPECTED[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+    // TEST1
+    for (int i = 0; i < 4; i++)
+    {
+        TEST_ASSERT_EQUAL(strcmp(TEST1_EXPECTED[i], TEST1[i]), 0);
+        free(TEST1[i]);
+    }
+
+    // TEST2
+    TEST_ASSERT_EQUAL(strcmp(TEST2_EXPECTED[0], TEST2[0]), 0);
+    free(TEST2[0]);
+
+    // TEST3
+    for (int i = 0; i < 10; i++)
+    {
+        TEST_ASSERT_EQUAL(strcmp(TEST3_EXPECTED[i], TEST3[i]), 0);
+        free(TEST3[i]);
+    }
+    
+    free(TEST1);
+    free(TEST2);
+    free(TEST3);
+}
 // ********************* MAIN *********************
 
 void tearDown(void) {}

@@ -71,4 +71,5 @@ const BOOL sum28(const int* nums, const int size);
 const BOOL more14(const int* nums, const int size);
 int* fizz_array(const int n);
 const BOOL only14(const int* nums, const int size);
+char** fizz_array2(const int n);
 #endif // MAIN_H

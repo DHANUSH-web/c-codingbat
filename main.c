@@ -313,6 +313,20 @@ const BOOL only14(const int* nums, const int size)
     return TRUE;
 }
 
+char** fizz_array2(const int n)
+{
+    char** arr = malloc((size_t)n * sizeof(*arr));
+    const int MAX_BUF = 256;
+
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = malloc(MAX_BUF);
+        sprintf(arr[i], "%d", i);
+    }
+
+    return arr;
+}
+
 #ifndef UNIT_TEST
 int main()
 {
