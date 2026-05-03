@@ -296,7 +296,7 @@ const BOOL more14(const int* nums, const int size)
 
 int* fizz_array(const int n)
 {
-    int* arr = malloc(n);
+    int* arr = malloc((size_t)n * sizeof(*arr));
 
     for (int i = 0; i < n; i++)
         arr[i] = i;
