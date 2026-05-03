@@ -254,7 +254,7 @@ void test_fizz_array(void)
     TEST_ASSERT_EQUAL(TEST2_EXPECTED[0], TEST2[0]);
 
     // TEST3
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 10; i++)
         TEST_ASSERT_EQUAL(TEST3_EXPECTED[i], TEST3[i]);
     
     free(TEST1);
