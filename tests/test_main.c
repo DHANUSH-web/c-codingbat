@@ -261,6 +261,17 @@ void test_fizz_array(void)
     free(TEST2);
     free(TEST3);
 }
+
+void test_only14(void)
+{
+    const int TEST_ARR1[] = {1, 4, 1, 4};
+    const int TEST_ARR2[] = {1, 4, 2, 4};
+    const int TEST_ARR3[] = {1, 1};
+    
+    TEST_ASSERT_TRUE(only14(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0])));
+    TEST_ASSERT_FALSE(only14(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
+    TEST_ASSERT_TRUE(only14(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
+}
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -297,6 +308,8 @@ int main(void)
     RUN_TEST(test_sum28);
     RUN_TEST(test_more14);
     RUN_TEST(test_fizz_array);
+    RUN_TEST(test_only14);
+    RUN_TEST(test_fizz_array2);
 
     return UNITY_END();
 }
