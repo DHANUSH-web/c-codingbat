@@ -278,22 +278,22 @@ void test_fizz_array2(void)
     char** TEST1 = fizz_array2(4);
     char** TEST2 = fizz_array2(1);
     char** TEST3 = fizz_array2(10);
-
+    
     const char TEST1_EXPECTED[4][2] = {"0", "1", "2", "3"};
     const char TEST2_EXPECTED[1][2] = {"0"};
     const char TEST3_EXPECTED[10][2] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-
+    
     // TEST1
     for (int i = 0; i < 4; i++)
     {
         TEST_ASSERT_EQUAL(strcmp(TEST1_EXPECTED[i], TEST1[i]), 0);
         free(TEST1[i]);
     }
-
+    
     // TEST2
     TEST_ASSERT_EQUAL(strcmp(TEST2_EXPECTED[0], TEST2[0]), 0);
     free(TEST2[0]);
-
+    
     // TEST3
     for (int i = 0; i < 10; i++)
     {
@@ -304,6 +304,17 @@ void test_fizz_array2(void)
     free(TEST1);
     free(TEST2);
     free(TEST3);
+}
+
+void test_no14(void)
+{
+    const int TEST_ARR1[] = {1, 2, 3};
+    const int TEST_ARR2[] = {1, 2, 3, 4};
+    const int TEST_ARR3[] = {2, 3, 4};
+    
+    TEST_ASSERT_TRUE(no14(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0])));
+    TEST_ASSERT_FALSE(no14(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
+    TEST_ASSERT_TRUE(no14(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
 // ********************* MAIN *********************
 
@@ -343,6 +354,7 @@ int main(void)
     RUN_TEST(test_fizz_array);
     RUN_TEST(test_only14);
     RUN_TEST(test_fizz_array2);
+    RUN_TEST(test_no14);
 
     return UNITY_END();
 }
