@@ -327,6 +327,21 @@ char** fizz_array2(const int n)
     return arr;
 }
 
+const BOOL no14(const int* nums, const int size)
+{
+    BOOL has1 = FALSE;
+    BOOL has4 = FALSE;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 1) has1 = TRUE;
+        if (nums[i] == 4) has4 = TRUE;
+        if (has1 && has4) return FALSE;
+    }
+
+    return !(has1 && has4);
+}
+
 #ifndef UNIT_TEST
 int main()
 {
