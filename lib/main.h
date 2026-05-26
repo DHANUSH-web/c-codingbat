@@ -73,4 +73,5 @@ int* fizz_array(const int n);
 const BOOL only14(const int* nums, const int size);
 char** fizz_array2(const int n);
 const BOOL no14(const int* nums, const int size);
+const BOOL is_everywhere(const int* nums, const int val, const int size);
 #endif // MAIN_H

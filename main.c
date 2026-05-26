@@ -342,6 +342,15 @@ const BOOL no14(const int* nums, const int size)
     return !(has1 && has4);
 }
 
+const BOOL is_everywhere(const int* nums, const int val, const int size)
+{
+    for (int i = 0; i < size - 1; i++)
+        if (nums[i] != val && nums[i+1] != val)
+            return FALSE;
+
+    return TRUE;
+}
+
 #ifndef UNIT_TEST
 int main()
 {
