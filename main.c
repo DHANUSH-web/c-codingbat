@@ -351,6 +351,21 @@ const BOOL is_everywhere(const int* nums, const int val, const int size)
     return TRUE;
 }
 
+const BOOL either24(const int* nums, const int size)
+{
+    BOOL is2 = FALSE;
+    BOOL is4 = FALSE;
+
+    for (int i = 0; i < size-1; i++)
+    {
+        if (is2 && is4) return FALSE;
+        if (nums[i] == 2 && nums[i+1] == 2) is2 = TRUE;
+        if (nums[i] == 4 && nums[i+1] == 4) is4 = TRUE;
+    }
+
+    return is2 != is4;
+}
+
 #ifndef UNIT_TEST
 int main()
 {

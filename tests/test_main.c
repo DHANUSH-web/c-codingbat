@@ -327,6 +327,17 @@ void test_is_everywhere(void)
     TEST_ASSERT_FALSE(is_everywhere(TEST_ARR2, 2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
     TEST_ASSERT_FALSE(is_everywhere(TEST_ARR3, 1, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
+
+void test_either24(void)
+{
+    const int TEST_ARR1[] = {1, 2, 2};
+    const int TEST_ARR2[] = {4, 4, 1};
+    const int TEST_ARR3[] = {4, 4, 1, 2, 2};
+
+    TEST_ASSERT_TRUE(either24(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0])));
+    TEST_ASSERT_TRUE(either24(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
+    TEST_ASSERT_FALSE(either24(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
+}
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -367,6 +378,7 @@ int main(void)
     RUN_TEST(test_fizz_array2);
     RUN_TEST(test_no14);
     RUN_TEST(test_is_everywhere);
+    RUN_TEST(test_either24);
 
     return UNITY_END();
 }
