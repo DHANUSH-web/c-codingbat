@@ -75,4 +75,5 @@ char** fizz_array2(const int n);
 const BOOL no14(const int* nums, const int size);
 const BOOL is_everywhere(const int* nums, const int val, const int size);
 const BOOL either24(const int* nums, const int size);
+const int match_up(const int* nums1, const int* num2, const int size);
 #endif // MAIN_H

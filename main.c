@@ -366,6 +366,17 @@ const BOOL either24(const int* nums, const int size)
     return is2 != is4;
 }
 
+const int match_up(const int* nums1, const int* nums2, const int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+        if (nums1[i] != nums2[i] && abs(nums1[i] - nums2[i]) <= 2)
+            count++;
+
+    return count;
+}
+
 #ifndef UNIT_TEST
 int main()
 {
