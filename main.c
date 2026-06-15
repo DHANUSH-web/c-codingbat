@@ -131,7 +131,7 @@ double calculate_time_dilation(const double mass_kg, const double distance_r, co
 
 // END: MAIN_UTILS
 
-const int tea_party(const int tea, const int candy)
+int tea_party(const int tea, const int candy)
 {
     return (tea < 5 || candy < 5) ? 0 : (tea >= candy * 2 || candy >= tea * 2) ? 2 : 1;
 }
@@ -166,12 +166,12 @@ const char *fizz_string2(const int n)
     return buffer;
 }
 
-const BOOL two_as_one(const int a, const int b, const int c)
+BOOL two_as_one(const int a, const int b, const int c)
 {
     return a + b == c || a + c == b || b + c == a;
 }
 
-const BOOL in_order(
+BOOL in_order(
     const int a,
     const int b,
     const int c,
@@ -180,7 +180,7 @@ const BOOL in_order(
     return (bOk || b > a) && c > b;
 }
 
-const BOOL in_order_equal(
+BOOL in_order_equal(
     const int a,
     const int b,
     const int c,
@@ -189,32 +189,32 @@ const BOOL in_order_equal(
     return (equal_ok && a <= b && b <= c) || (a < b && b < c);
 }
 
-const BOOL last_digit(const int a, const int b, const int c)
+BOOL last_digit(const int a, const int b, const int c)
 {
     return a % 10 == b % 10 || b % 10 == c % 10 || a % 10 == c % 10;
 }
 
-const BOOL less_by_10(const int a, const int b, const int c)
+BOOL less_by_10(const int a, const int b, const int c)
 {
     return abs(a - b) >= 10 || abs(b - c) >= 10 || abs(a - c) >= 10;
 }
 
-const int without_doubles(const int die1, const int die2, const BOOL no_doubles)
+int without_doubles(const int die1, const int die2, const BOOL no_doubles)
 {
     return no_doubles && die1 == die2 ? (die1 == 6 ? 1 : die1 + 1) + die2 : die1 + die2;
 }
 
-const int max_mod5(const int a, const int b)
+int max_mod5(const int a, const int b)
 {
     return a == b ? 0 : a % 5 == b % 5 ? MIN(a, b) : MAX(a, b);
 }
 
-const int red_ticket(const int a, const int b, const int c)
+int red_ticket(const int a, const int b, const int c)
 {
     return a == 2 && b == 2 && c == 2 ? 10 : a == b && b == c ? 5 : a != b && a != c ? 1 : 0;
 }
 
-const int green_ticket(const int a, const int b, const int c)
+int green_ticket(const int a, const int b, const int c)
 {
     return a == b && b == c ? 20 : a == b || a == c || b == c ? 10 : 0;
 }
@@ -238,7 +238,7 @@ const char* to_binary(unsigned int n)
     return bits;
 }
 
-const int sum67(const int* nums, const int size)
+int sum67(const int* nums, const int size)
 {
     int sum = 0;
     BOOL skip = FALSE;
@@ -253,7 +253,7 @@ const int sum67(const int* nums, const int size)
     return sum;
 }
 
-const BOOL has22(const int* nums, const int size)
+BOOL has22(const int* nums, const int size)
 {
     for (int i = 0; i < size - 1; i++)
         if (nums[i] == 2 && nums[i+1] == 2)
@@ -261,7 +261,7 @@ const BOOL has22(const int* nums, const int size)
     return FALSE;
 }
 
-const BOOL lucky13(const int* nums, const int size)
+BOOL lucky13(const int* nums, const int size)
 {
     for (int i = 0; i < size; i++)
         if (nums[i] == 1 || nums[i] == 3)
@@ -270,7 +270,7 @@ const BOOL lucky13(const int* nums, const int size)
     return TRUE;
 }
 
-const BOOL sum28(const int* nums, const int size)
+BOOL sum28(const int* nums, const int size)
 {
     int sum = 0;
     
@@ -281,7 +281,7 @@ const BOOL sum28(const int* nums, const int size)
     return sum == 8;
 }
 
-const BOOL more14(const int* nums, const int size)
+BOOL more14(const int* nums, const int size)
 {
     int count = 0;
 
@@ -304,7 +304,7 @@ int* fizz_array(const int n)
     return arr;
 }
 
-const BOOL only14(const int* nums, const int size)
+BOOL only14(const int* nums, const int size)
 {
     for (int i = 0; i < size; i++)
         if (nums[i] != 1 && nums[i] != 4)
@@ -327,7 +327,7 @@ char** fizz_array2(const int n)
     return arr;
 }
 
-const BOOL no14(const int* nums, const int size)
+BOOL no14(const int* nums, const int size)
 {
     BOOL has1 = FALSE;
     BOOL has4 = FALSE;
@@ -342,7 +342,7 @@ const BOOL no14(const int* nums, const int size)
     return !(has1 && has4);
 }
 
-const BOOL is_everywhere(const int* nums, const int val, const int size)
+BOOL is_everywhere(const int* nums, const int val, const int size)
 {
     for (int i = 0; i < size - 1; i++)
         if (nums[i] != val && nums[i+1] != val)
@@ -351,7 +351,7 @@ const BOOL is_everywhere(const int* nums, const int val, const int size)
     return TRUE;
 }
 
-const BOOL either24(const int* nums, const int size)
+BOOL either24(const int* nums, const int size)
 {
     BOOL is2 = FALSE;
     BOOL is4 = FALSE;
@@ -366,7 +366,7 @@ const BOOL either24(const int* nums, const int size)
     return is2 != is4;
 }
 
-const int match_up(const int* nums1, const int* nums2, const int size)
+int match_up(const int* nums1, const int* nums2, const int size)
 {
     int count = 0;
 
