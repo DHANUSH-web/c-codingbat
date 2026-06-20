@@ -343,16 +343,27 @@ void test_match_up(void)
 {
     const int TEST_ARR11[] = {1, 2, 3};
     const int TEST_ARR12[] = {2, 3, 10};
-
+    
     const int TEST_ARR21[] = {1, 2, 3};
     const int TEST_ARR22[] = {2, 3, 5};
     
     const int TEST_ARR31[] = {1, 2, 3};
     const int TEST_ARR32[] = {2, 3, 3};
-
+    
     TEST_ASSERT_EQUAL(match_up(TEST_ARR11, TEST_ARR12, sizeof(TEST_ARR11) / sizeof(TEST_ARR11[0])), 2);
     TEST_ASSERT_EQUAL(match_up(TEST_ARR21, TEST_ARR22, sizeof(TEST_ARR21) / sizeof(TEST_ARR21[0])), 3);
     TEST_ASSERT_EQUAL(match_up(TEST_ARR31, TEST_ARR32, sizeof(TEST_ARR31) / sizeof(TEST_ARR31[0])), 2);
+}
+
+void test_has77(void)
+{
+    const int TEST_ARR1[] = {1, 7, 7};
+    const int TEST_ARR2[] = {1, 7, 1, 7};
+    const int TEST_ARR3[] = {1, 7, 1, 1, 7};
+
+    TEST_ASSERT_TRUE(has77(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0])));
+    TEST_ASSERT_TRUE(has77(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
+    TEST_ASSERT_FALSE(has77(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
 // ********************* MAIN *********************
 
@@ -361,7 +372,7 @@ void tearDown(void) {}
 int main(void)
 {
     UNITY_BEGIN();
-
+    
     RUN_TEST(test_MAX);
     RUN_TEST(test_D_MAX);
     RUN_TEST(test_F_MAX);
@@ -396,6 +407,7 @@ int main(void)
     RUN_TEST(test_is_everywhere);
     RUN_TEST(test_either24);
     RUN_TEST(test_match_up);
+    RUN_TEST(test_has77);
 
     return UNITY_END();
 }

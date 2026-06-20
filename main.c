@@ -377,6 +377,15 @@ int match_up(const int* nums1, const int* nums2, const int size)
     return count;
 }
 
+BOOL has77(const int* nums, const int size)
+{
+    for (int i = 0; i < size-2; i++)
+        if ((nums[i] == 7 && (nums[i+1] == 7 || nums[i+2] == 7)) || (nums[i+1] == 7 && nums[i+2] == 7))
+            return TRUE;
+    
+    return FALSE;
+}
+
 #ifndef UNIT_TEST
 int main()
 {
