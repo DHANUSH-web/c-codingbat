@@ -386,6 +386,22 @@ BOOL has77(const int* nums, const int size)
     return FALSE;
 }
 
+BOOL has12(const int* nums, const int size)
+{
+    int found = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 1 && !found)
+            found = 1;
+
+        if (nums[i] == 2 && found)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 #ifndef UNIT_TEST
 int main()
 {

@@ -365,6 +365,20 @@ void test_has77(void)
     TEST_ASSERT_TRUE(has77(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
     TEST_ASSERT_FALSE(has77(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
+
+void test_has12(void)
+{
+    const int TEST_ARR1[] = {1, 3, 2};
+    const int TEST_ARR2[] = {3, 1, 2};
+    const int TEST_ARR3[] = {3, 1, 4, 5, 2};
+    const int TEST_ARR4[] = {1};
+
+    TEST_ASSERT_TRUE(has12(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0])));
+    TEST_ASSERT_TRUE(has12(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0])));
+    TEST_ASSERT_TRUE(has12(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
+    TEST_ASSERT_FALSE(has12(TEST_ARR4, sizeof(TEST_ARR4) / sizeof(TEST_ARR4[0])));
+}
+
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -408,6 +422,7 @@ int main(void)
     RUN_TEST(test_either24);
     RUN_TEST(test_match_up);
     RUN_TEST(test_has77);
+    RUN_TEST(test_has12);
 
     return UNITY_END();
 }
