@@ -1,6 +1,5 @@
 #include <string.h>
 #include <stdio.h>
-#include <string.h>
 #include <logger/logger.h>
 #include <math.h>
 
@@ -65,13 +64,13 @@ const double SOLAR_MASS = 1.98847e30;   // Mass of our sun (kg)
 // #define SOLAR_MASS 1.98847e30   // Mass of our sun (kg)
 
 // convert mass from kg to solar mass
-const double to_solar_mass(const double mass_kg)
+double to_solar_mass(const double mass_kg)
 {
     return mass_kg / SOLAR_MASS;
 }
 
 // convert mass from solar mass to kg
-const double to_kg(const double solar_masses)
+double to_kg(const double solar_masses)
 {
     return solar_masses * SOLAR_MASS;
 }
@@ -82,11 +81,11 @@ const double to_kg(const double solar_masses)
     is moving (v) at a certain distance (r)
 
     v = velocity in ms
-    r = radius in m
+    r = radius in `m`
 
     M = (v^2 * r) / G
 */
-const double mass_from_orbit(const double r, const double v)
+double mass_from_orbit(const double r, const double v)
 {
     const double mass_kg = ((v * v) * r) / G;
     return mass_kg;
@@ -94,7 +93,7 @@ const double mass_from_orbit(const double r, const double v)
 
 /*
     Logic2: Radius from MASS (Schwarzschild)
-    If you already have the mass in solar masses, you can calculate the radius of event horizon
+    If you already have the mass in solar masses, you can calculate the radius of event horizon,
     and you can calculate how much big the black hole actually is
 
     Rs = (2 * G * M) / C^2
@@ -103,7 +102,7 @@ const double mass_from_orbit(const double r, const double v)
     M = Mass of black hole in kg
     C = speed of light
 */
-const double get_schwarzschild_radius(const double mass_kg)
+double get_schwarzschild_radius(const double mass_kg)
 {
     const double sr = (2 * G * mass_kg) / (double)(C * C);
     return sr;
@@ -115,7 +114,7 @@ const double get_schwarzschild_radius(const double mass_kg)
 
     t0 = tf * { 1 - (Rs / r) }
 */
-const double calculate_time_dilation(const double mass_kg, const double distance_r, const double time_seconds)
+double calculate_time_dilation(const double mass_kg, const double distance_r, const double time_seconds)
 {
     const double sr = get_schwarzschild_radius(mass_kg);
 
@@ -220,7 +219,7 @@ int green_ticket(const int a, const int b, const int c)
     return a == b && b == c ? 20 : a == b || a == c || b == c ? 10 : 0;
 }
 
-char* to_binary(unsigned int n)
+const char* to_binary(unsigned int n)
 {
     char* bits = malloc(MAX_BITS + 1);
 
@@ -237,6 +236,189 @@ char* to_binary(unsigned int n)
 
     memmove(bits, bits + i + 1, MAX_BITS - i + 2);
     return bits;
+}
+
+int sum67(const int* nums, const int size)
+{
+    int sum = 0;
+    BOOL skip = FALSE;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 6) skip = TRUE;
+        else if (nums[i] == 7 && skip) skip = FALSE;
+        else if (!skip) sum += nums[i];
+    }
+
+    return sum;
+}
+
+BOOL has22(const int* nums, const int size)
+{
+    for (int i = 0; i < size - 1; i++)
+        if (nums[i] == 2 && nums[i+1] == 2)
+            return TRUE;
+    return FALSE;
+}
+
+BOOL lucky13(const int* nums, const int size)
+{
+    for (int i = 0; i < size; i++)
+        if (nums[i] == 1 || nums[i] == 3)
+            return FALSE;
+
+    return TRUE;
+}
+
+BOOL sum28(const int* nums, const int size)
+{
+    int sum = 0;
+    
+    for (int i = 0; i < size; i++)
+        if (nums[i] == 2)
+            sum += nums[i];
+    
+    return sum == 8;
+}
+
+BOOL more14(const int* nums, const int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 1) count++;
+        if (nums[i] == 4) count--;
+    }
+
+    return count > 0;
+}
+
+int* fizz_array(const int n)
+{
+    int* arr = malloc((size_t)n * sizeof(*arr));
+
+    for (int i = 0; i < n; i++)
+        arr[i] = i;
+    
+    return arr;
+}
+
+BOOL only14(const int* nums, const int size)
+{
+    for (int i = 0; i < size; i++)
+        if (nums[i] != 1 && nums[i] != 4)
+            return FALSE;
+    
+    return TRUE;
+}
+
+char** fizz_array2(const int n)
+{
+    char** arr = malloc((size_t)n * sizeof(*arr));
+    const int MAX_BUF = 256;
+
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = malloc(MAX_BUF);
+        sprintf(arr[i], "%d", i);
+    }
+
+    return arr;
+}
+
+BOOL no14(const int* nums, const int size)
+{
+    BOOL has1 = FALSE;
+    BOOL has4 = FALSE;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 1) has1 = TRUE;
+        if (nums[i] == 4) has4 = TRUE;
+        if (has1 && has4) return FALSE;
+    }
+
+    return !(has1 && has4);
+}
+
+BOOL is_everywhere(const int* nums, const int val, const int size)
+{
+    for (int i = 0; i < size - 1; i++)
+        if (nums[i] != val && nums[i+1] != val)
+            return FALSE;
+
+    return TRUE;
+}
+
+BOOL either24(const int* nums, const int size)
+{
+    BOOL is2 = FALSE;
+    BOOL is4 = FALSE;
+
+    for (int i = 0; i < size-1; i++)
+    {
+        if (is2 && is4) return FALSE;
+        if (nums[i] == 2 && nums[i+1] == 2) is2 = TRUE;
+        if (nums[i] == 4 && nums[i+1] == 4) is4 = TRUE;
+    }
+
+    return is2 != is4;
+}
+
+int match_up(const int* nums1, const int* nums2, const int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+        if (nums1[i] != nums2[i] && abs(nums1[i] - nums2[i]) <= 2)
+            count++;
+
+    return count;
+}
+
+BOOL has77(const int* nums, const int size)
+{
+    for (int i = 0; i < size-2; i++)
+        if ((nums[i] == 7 && (nums[i+1] == 7 || nums[i+2] == 7)) || (nums[i+1] == 7 && nums[i+2] == 7))
+            return TRUE;
+    
+    return FALSE;
+}
+
+BOOL has12(const int* nums, const int size)
+{
+    int found = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] == 1 && !found)
+            found = 1;
+
+        if (nums[i] == 2 && found)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL mod_three(const int* nums, const int size)
+{
+    for (int i = 0; i < size - 2; i++)
+    {
+        if ((
+                nums[i]   % 2 == 0 &&
+                nums[i+1] % 2 == 0 &&
+                nums[i+2] % 2 == 0
+            ) || (
+                nums[i]   % 2 == 1 &&
+                nums[i+1] % 2 == 1 &&
+                nums[i+2] % 2 == 1
+            ))
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 #ifndef UNIT_TEST
@@ -259,10 +441,7 @@ int main()
     // printf("Schwarzschild Radius: %f M\n", sr);
     // BLACK HOLE SIMULATION
 
-    char* bits = to_binary(27);
-    printf("0b'%s\n", bits);
-    free(bits);
-
+    printf("Run `mac test` to test your logic!!\n");
     return 0;
 }
 #endif

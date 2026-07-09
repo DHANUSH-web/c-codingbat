@@ -17,52 +17,66 @@ double D_ABS(const double a);
 float F_ABS(const float a);
 // END: MAIN UTILS
 
-const int tea_party(const int tea, const int candy);
+int tea_party(const int tea, const int candy);
 const char *fizz_string(const char *str);
 const char *fizz_string2(const int n);
-const BOOL two_as_one(
+BOOL two_as_one(
     const int a,
     const int b,
     const int c
 );
-const BOOL in_order(
+BOOL in_order(
     const int a,
     const int b,
     const int c,
     BOOL bOk
 );
-const BOOL in_order_equal(
+BOOL in_order_equal(
     const int a,
     const int b,
     const int c,
     BOOL equal_ok
 );
-const BOOL last_digit(
+BOOL last_digit(
     const int a,
     const int b,
     const int c
 );
-const BOOL less_by_10(
+BOOL less_by_10(
     const int a,
     const int b,
     const int c
 );
-const int without_doubles(
+int without_doubles(
     const int die1,
     const int die2,
     const BOOL no_doubles
 );
-const int max_mod5(const int a, const int b);
-const int red_ticket(
+int max_mod5(const int a, const int b);
+int red_ticket(
     const int a,
     const int b,
     const int c
 );
-const int green_ticket(
+int green_ticket(
     const int a,
     const int b,
     const int c
 );
 char* to_binary(unsigned int n);
-
+int sum67(const int* nums, const int size);
+BOOL has22(const int* nums, const int size);
+BOOL lucky13(const int* nums, const int size);
+BOOL sum28(const int* nums, const int size);
+BOOL more14(const int* nums, const int size);
+int* fizz_array(const int n);
+BOOL only14(const int* nums, const int size);
+char** fizz_array2(const int n);
+BOOL no14(const int* nums, const int size);
+BOOL is_everywhere(const int* nums, const int val, const int size);
+BOOL either24(const int* nums, const int size);
+int match_up(const int* nums1, const int* num2, const int size);
+BOOL has77(const int* nums, const int size);
+BOOL has12(const int* nums, const int size);
+BOOL mod_three(const int* nums, const int size);
 #endif // MAIN_H
