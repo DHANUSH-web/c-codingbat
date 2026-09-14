@@ -470,3 +470,19 @@ BOOL two_two(const int* nums, const int size)
 
     return couple || count == 0;
 }
+
+BOOL same_ends(const int* nums, const int len, const int size)
+{
+    for (int i = 0; i < len; i++)
+        if (nums[i] != nums[size - len + i])
+            return FALSE;
+    return TRUE;
+}
+
+BOOL triple_up(const int* nums, const int size)
+{
+    for (int i = 0; i < size - 2; i++)
+        if (nums[i+1] - nums[i] == 1 && nums[i+2] - nums[i+1] == 1)
+            return TRUE;
+    return FALSE;
+}
