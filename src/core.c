@@ -486,3 +486,13 @@ BOOL triple_up(const int* nums, const int size)
             return TRUE;
     return FALSE;
 }
+
+int* fizz_array3(const int start, const int end)
+{
+    int* arr = malloc(sizeof(int) * (end - start));
+
+    for (int i = start; i < end; i++)
+        arr[i - start] = i;
+
+    return arr;
+}

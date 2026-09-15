@@ -432,6 +432,36 @@ void test_triple_up(void)
     TEST_ASSERT_FALSE(triple_up(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0])));
 }
 
+void test_fizz_array3(void)
+{
+    // expected arrays
+    const int TEST_ARR1[] = {5, 6, 7, 8, 9};
+    const int TEST_ARR2[] = {11, 12, 13, 14, 15, 16, 17};
+    const int TEST_ARR3[] = {1, 2};
+
+    // actual arrays
+    int* TEST1 = fizz_array3(5, 10);
+    int* TEST2 = fizz_array3(11, 18);
+    int* TEST3 = fizz_array3(1, 3);
+
+    // CASE #1
+    for (int i = 0; i < sizeof(TEST_ARR1)/sizeof(TEST_ARR1[0]); i++)
+        TEST_ASSERT_EQUAL(TEST_ARR1[i], TEST1[i]);
+
+    // CASE #2
+    for (int i = 0; i < sizeof(TEST_ARR2)/sizeof(TEST_ARR2[0]); i++)
+        TEST_ASSERT_EQUAL(TEST_ARR2[i], TEST2[i]);
+
+    // CASE #3
+    for (int i = 0; i < sizeof(TEST_ARR3)/sizeof(TEST_ARR3[0]); i++)
+        TEST_ASSERT_EQUAL(TEST_ARR3[i], TEST3[i]);
+
+    // free the allocated memories
+    free(TEST1);
+    free(TEST2);
+    free(TEST3);
+}
+
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -481,6 +511,7 @@ int main(void)
     RUN_TEST(test_two_two);
     RUN_TEST(test_same_ends);
     RUN_TEST(test_triple_up);
+    RUN_TEST(test_fizz_array3);
 
     return UNITY_END();
 }
