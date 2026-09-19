@@ -54,5 +54,6 @@ BOOL two_two(const int *nums, const int size);
 BOOL same_ends(const int* nums, const int len, const int size);
 BOOL triple_up(const int* nums, const int size);
 int* fizz_array3(const int start, const int end);
+int* shift_left(int* nums, const int size);
 
 #endif // C_CODINGBAT_INCLUDE_CORE_H

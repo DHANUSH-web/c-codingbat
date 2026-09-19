@@ -462,6 +462,29 @@ void test_fizz_array3(void)
     free(TEST3);
 }
 
+void test_shift_left(void)
+{
+    int TEST_ARR1[] = {5, 1, 2, 3, 4};
+    int TEST_ARR2[] = {1, 2};
+    int TEST_ARR3[] = {1};
+
+    int EXP1[] = {1, 2, 3, 4, 5};
+    int EXP2[] = {2, 1};
+    int EXP3[] = {1};
+
+    int* TEST1 = shift_left(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0]));
+    int* TEST2 = shift_left(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0]));
+    int* TEST3 = shift_left(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0]));
+
+    for (int i = 0; i < sizeof(EXP1) / sizeof(EXP1[0]); i++)
+        TEST_ASSERT_EQUAL(EXP1[i], TEST1[i]);
+
+    for (int i = 0; i < sizeof(EXP2) / sizeof(EXP2[0]); i++)
+        TEST_ASSERT_EQUAL(EXP2[i], TEST2[i]);
+
+    for (int i = 0; i < sizeof(EXP3) / sizeof(EXP3[0]); i++)
+        TEST_ASSERT_EQUAL(EXP3[i], TEST3[i]);
+}
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -512,6 +535,7 @@ int main(void)
     RUN_TEST(test_same_ends);
     RUN_TEST(test_triple_up);
     RUN_TEST(test_fizz_array3);
+    RUN_TEST(test_shift_left);
 
     return UNITY_END();
 }
