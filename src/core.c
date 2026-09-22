@@ -509,3 +509,11 @@ int* shift_left(int* nums, const int size)
     nums[size-1] = temp;
     return nums;
 }
+
+int* ten_run(int* nums, const int size)
+{
+    for (int i = 0; i < size-1; i++)
+        if (nums[i] % 10 == 0 && nums[i+1] % 10 != 0)
+            nums[i+1] = nums[i];
+    return nums;
+}

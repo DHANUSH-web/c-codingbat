@@ -485,6 +485,31 @@ void test_shift_left(void)
     for (int i = 0; i < sizeof(EXP3) / sizeof(EXP3[0]); i++)
         TEST_ASSERT_EQUAL(EXP3[i], TEST3[i]);
 }
+
+void test_ten_run(void)
+{
+    int TEST_ARR1[] = {2, 10, 3, 4, 20, 5};
+    int TEST_ARR2[] = {10, 1, 3, 20, 2};
+    int TEST_ARR3[] = {10, 1, 9, 20};
+
+    const int EXP_ARR1[] = {2, 10, 10, 10, 20, 20};
+    const int EXP_ARR2[] = {10, 10, 10, 20, 20};
+    const int EXP_ARR3[] = {10, 10, 10, 20};
+
+    int* TEST1 = ten_run(TEST_ARR1, sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0]));
+    int* TEST2 = ten_run(TEST_ARR2, sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0]));
+    int* TEST3 = ten_run(TEST_ARR3, sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0]));
+
+    for (int i = 0; i < sizeof(TEST_ARR1) / sizeof(TEST_ARR1[0]); i++)
+        TEST_ASSERT_EQUAL(EXP_ARR1[i], TEST1[i]);
+
+    for (int i = 0; i < sizeof(TEST_ARR2) / sizeof(TEST_ARR2[0]); i++)
+        TEST_ASSERT_EQUAL(EXP_ARR2[i], TEST2[i]);
+
+    for (int i = 0; i < sizeof(TEST_ARR3) / sizeof(TEST_ARR3[0]); i++)
+        TEST_ASSERT_EQUAL(EXP_ARR3[i], TEST3[i]);
+}
+
 // ********************* MAIN *********************
 
 void tearDown(void) {}
@@ -536,6 +561,7 @@ int main(void)
     RUN_TEST(test_triple_up);
     RUN_TEST(test_fizz_array3);
     RUN_TEST(test_shift_left);
+    RUN_TEST(test_ten_run);
 
     return UNITY_END();
 }
