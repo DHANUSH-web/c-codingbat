@@ -10,3 +10,8 @@ target_include_directories(c-codingbat PRIVATE include extras/unity/src)
 
 add_executable(c-codingbat-tests tests/test_core.c src/core.c extras/unity/src/unity.c)
 target_include_directories(c-codingbat-tests PRIVATE include extras/unity/src)
+
+if(NOT MSVC)
+    target_link_libraries(c-codingbat PRIVATE m)
+    target_link_libraries(c-codingbat-tests PRIVATE m)
+endif()

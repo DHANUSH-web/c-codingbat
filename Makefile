@@ -8,15 +8,22 @@ build-release:
 
 build-all: build build-release
 
+# Windows toolchains provide math functions through the C runtime.
+ifeq ($(OS),Windows_NT)
+MATH_LIB :=
+else
+MATH_LIB := -lm
+endif
+
 build-raw:
 	@mkdir -p out/debug
-	@gcc -std=c17 -Iinclude  src/core.c src/main.c -o out/debug/c-codingbat
-	@gcc -std=c17 -Iinclude -Iextras/unity/src tests/test_core.c src/core.c extras/unity/src/unity.c -o out/debug/c-codingbat-tests
+	@gcc -std=c17 -Iinclude  src/core.c src/main.c -o out/debug/c-codingbat $(MATH_LIB)
+	@gcc -std=c17 -Iinclude -Iextras/unity/src tests/test_core.c src/core.c extras/unity/src/unity.c -o out/debug/c-codingbat-tests $(MATH_LIB)
 
 build-raw-release:
 	@mkdir -p out/release
-	@gcc -std=c17 -O3 -march=native -Iinclude src/core.c src/main.c -o out/release/c-codingbat
-	@gcc -std=c17 -O3 -march=native -Iinclude -Iextras/unity/src tests/test_core.c src/core.c extras/unity/src/unity.c  -o out/release/c-codingbat-tests
+	@gcc -std=c17 -O3 -march=native -Iinclude src/core.c src/main.c -o out/release/c-codingbat $(MATH_LIB)
+	@gcc -std=c17 -O3 -march=native -Iinclude -Iextras/unity/src tests/test_core.c src/core.c extras/unity/src/unity.c -o out/release/c-codingbat-tests $(MATH_LIB)
 
 build-raw-all: build-raw build-raw-release
 
